@@ -1,7 +1,5 @@
-// const { crawlPage }  = require('./crawl.js')
-const { readFiles }  = require('./readFiles.js')
+const { readFiles, extractFileExtensions }  = require('./readFiles.js')
 const path = require('path')
-// const fs = require('fs')
 
 async function main() {
     if (process.argv.length < 3) {
@@ -15,7 +13,8 @@ async function main() {
     const inputPath = process.argv[2]
 
     console.log(`Starting organize of files in ${inputPath}`)
-    console.log(readFiles(path.normalize(inputPath)))
+    const files = await readFiles(path.normalize(inputPath))
+    const filesExtensions = extractFileExtensions(files)
 }
 
 main()
