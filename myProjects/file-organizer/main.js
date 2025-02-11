@@ -16,7 +16,7 @@ async function main() {
     console.log(`Starting organize files in ${inputPath}`)
     const files = await readFiles(path.normalize(inputPath))
     const filesExtensions = extractFileExtensions(files)
-    createFolders(inputPath, filesExtensions)
+    await createFolders(inputPath, filesExtensions)
 }
 
 main()
