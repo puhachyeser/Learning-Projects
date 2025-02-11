@@ -1,4 +1,5 @@
 const { readFiles, extractFileExtensions }  = require('./readFiles.js')
+const { createFolders }  = require('./organize.js')
 const path = require('path')
 
 async function main() {
@@ -12,9 +13,10 @@ async function main() {
     }
     const inputPath = process.argv[2]
 
-    console.log(`Starting organize of files in ${inputPath}`)
+    console.log(`Starting organize files in ${inputPath}`)
     const files = await readFiles(path.normalize(inputPath))
     const filesExtensions = extractFileExtensions(files)
+    createFolders(inputPath, filesExtensions)
 }
 
 main()
