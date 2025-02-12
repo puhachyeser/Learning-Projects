@@ -1,5 +1,5 @@
 const { readFiles, extractFileExtensions }  = require('./readFiles.js')
-const { createFolders }  = require('./organize.js')
+const { createFolders, organizeFiles }  = require('./organize.js')
 const path = require('path')
 
 async function main() {
@@ -17,6 +17,7 @@ async function main() {
     const files = await readFiles(path.normalize(inputPath))
     const filesExtensions = extractFileExtensions(files)
     await createFolders(inputPath, filesExtensions)
+    await organizeFiles(inputPath, files, filesExtensions)
 }
 
 main()
